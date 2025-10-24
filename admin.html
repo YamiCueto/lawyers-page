@@ -92,7 +92,7 @@
                         oninput="filterPosts()"
                     >
                 </div>
-                <select id="filterCategory" onchange="filterPosts()">
+                <select title="Filtrar por categoría" id="filterCategory" onchange="filterPosts()">
                     <option value="">Todas las categorías</option>
                     <option value="laboral">Laboral Administrativo</option>
                     <option value="contencioso">Contencioso Administrativo</option>
@@ -121,9 +121,6 @@
                 <div id="emptyState" class="empty-state" style="display: none;">
                     <i class="fas fa-inbox"></i>
                     <p>No hay publicaciones disponibles</p>
-                    <button class="btn btn-primary" onclick="openPostModal()">
-                        <i class="fas fa-plus"></i> Crear Primera Publicación
-                    </button>
                 </div>
             </div>
         </div>
@@ -137,7 +134,7 @@
                     <i class="fas fa-edit"></i>
                     <span id="modalTitle">Nueva Publicación</span>
                 </h3>
-                <button class="modal-close" onclick="closePostModal()">
+                <button title="Cerrar" class="modal-close" onclick="closePostModal()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
