@@ -13,6 +13,7 @@ css/
 ├── dashboard.css        # Dashboard y widgets de estadísticas
 ├── admin-tables.css     # Tablas, filtros y elementos de gestión
 ├── modals.css           # Modales y color picker
+├── sweetalert-custom.css # Estilos personalizados para SweetAlert2
 └── styles-new.css       # Archivo principal con imports (reemplazará styles.css)
 ```
 
@@ -68,9 +69,20 @@ css/
 - Animaciones de modal
 - Tamaños de modal (`.modal-small`)
 
+### **sweetalert-custom.css**
+- Estilos personalizados para SweetAlert2
+- Popup con bordes redondeados
+- Botones con gradientes (confirm/cancel)
+- Variantes de color (primary, success, danger)
+- Iconos estilizados
+- Animaciones de entrada
+- Overlay con blur
+- Responsive design
+
 ## 🔧 Uso en HTML
 
 ### Para páginas de administración (admin.html)
+
 ```html
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
@@ -78,6 +90,7 @@ css/
 <link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/admin-tables.css">
 <link rel="stylesheet" href="css/modals.css">
+<link rel="stylesheet" href="css/sweetalert-custom.css">
 ```
 
 ### Para página de login (login.html)

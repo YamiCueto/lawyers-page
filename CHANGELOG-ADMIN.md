@@ -39,6 +39,7 @@ css/
 ├── dashboard.css        (300 líneas) - Dashboard y widgets
 ├── admin-tables.css     (150 líneas) - Tablas y filtros
 ├── modals.css           (150 líneas) - Modales
+├── sweetalert-custom.css (180 líneas) - SweetAlert2 personalizado
 └── README.md            - Documentación
 ```
 
@@ -158,6 +159,38 @@ css/
 - Variables disponibles
 - Componentes reutilizables
 - Plan de migración
+
+### 11. Integración de SweetAlert2
+
+#### Biblioteca añadida:
+- **SweetAlert2 v11** (CDN) - Alertas modernas y personalizables
+- Reemplaza las alertas nativas del navegador (`confirm()`)
+- Estilos personalizados que coinciden con la paleta del sitio
+
+#### Alertas reemplazadas en admin.js:
+1. **Eliminar publicación** (`deletePost()`):
+   - Icono: warning (⚠️)
+   - Botón confirmar: Rojo (#e74c3c)
+   - Muestra toast de éxito al eliminar
+
+2. **Cerrar sesión** (`logout`):
+   - Icono: question (❓)
+   - Botón confirmar: Azul primario (#1a3a52)
+   - Mensaje de éxito antes de redireccionar
+
+3. **Eliminar categoría** (`deleteCategory()`):
+   - Validación: Error si la categoría tiene posts
+   - Icono: warning (⚠️)
+   - Toast de éxito al eliminar
+
+#### Personalización (sweetalert-custom.css):
+- Popup con bordes redondeados (16px)
+- Botones con gradientes y sombras
+- Iconos estilizados con colores de marca
+- Animación de entrada tipo bounce
+- Overlay con efecto blur
+- Responsive para móviles
+- Timer progress bar con color primario
 
 ## 🎨 Paleta de Colores
 

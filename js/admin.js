@@ -392,15 +392,42 @@ function editPost(id) {
 function deletePost(id) {
     const post = allPosts.find(p => p.id === id);
     
-    if (confirm(`¿Está seguro de eliminar "${post.title}"?\n\nEsta acción no se puede deshacer.`)) {
-        const posts = getPosts();
-        const updatedPosts = posts.filter(p => p.id !== id);
-        savePosts(updatedPosts);
-        renderPosts();
-        updateStats();
-        updateDashboardIfActive();
-        showNotification('Publicación eliminada', 'success');
-    }
+    Swal.fire({
+        title: '¿Eliminar publicación?',
+        html: `Estás a punto de eliminar:<br><strong>"${post.title}"</strong>`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#95a5a6',
+        confirmButtonText: '<i class="fas fa-trash"></i> Sí, eliminar',
+        cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+        focusCancel: true,
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-btn-confirm',
+            cancelButton: 'swal-btn-cancel'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const posts = getPosts();
+            const updatedPosts = posts.filter(p => p.id !== id);
+            savePosts(updatedPosts);
+            renderPosts();
+            updateStats();
+            updateDashboardIfActive();
+            
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'La publicación ha sido eliminada correctamente',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'swal-custom-popup'
+                }
+            });
+        }
+    });
 }
 
 // Actualizar dashboard si está activo
@@ -436,11 +463,39 @@ function showNotification(message, type = 'info') {
 
 // Cerrar sesión
 document.getElementById('logoutBtn').addEventListener('click', function() {
-    if (confirm('¿Cerrar sesión?')) {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('username');
-        window.location.href = 'login.html';
-    }
+    Swal.fire({
+        title: '¿Cerrar sesión?',
+        text: 'Se cerrará tu sesión actual',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#1a3a52',
+        cancelButtonColor: '#95a5a6',
+        confirmButtonText: '<i class="fas fa-sign-out-alt"></i> Sí, cerrar sesión',
+        cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-btn-confirm',
+            cancelButton: 'swal-btn-cancel'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            
+            Swal.fire({
+                title: '¡Hasta pronto!',
+                text: 'Sesión cerrada correctamente',
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'swal-custom-popup'
+                }
+            }).then(() => {
+                window.location.href = 'login.html';
+            });
+        }
+    });
 });
 
 // ========================================
@@ -727,20 +782,54 @@ function deleteCategory(id) {
     const postCount = posts.filter(p => p.category === category.slug).length;
     
     if (postCount > 0) {
-        showNotification(
-            `No se puede eliminar. Hay ${postCount} publicación(es) con esta categoría.`,
-            'error'
-        );
+        Swal.fire({
+            title: 'No se puede eliminar',
+            html: `La categoría <strong>"${category.name}"</strong> tiene <strong>${postCount}</strong> publicación(es) asociadas.<br><br>Primero debes reasignar o eliminar esas publicaciones.`,
+            icon: 'error',
+            confirmButtonColor: '#1a3a52',
+            confirmButtonText: '<i class="fas fa-check"></i> Entendido',
+            customClass: {
+                popup: 'swal-custom-popup',
+                confirmButton: 'swal-btn-confirm'
+            }
+        });
         return;
     }
     
-    if (confirm(`¿Está seguro de eliminar la categoría "${category.name}"?\n\nEsta acción no se puede deshacer.`)) {
-        const categories = getCategories();
-        const updatedCategories = categories.filter(c => c.id !== id);
-        saveCategories(updatedCategories);
-        renderCategories();
-        showNotification('Categoría eliminada', 'success');
-    }
+    Swal.fire({
+        title: '¿Eliminar categoría?',
+        html: `Estás a punto de eliminar:<br><strong>"${category.name}"</strong>`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#95a5a6',
+        confirmButtonText: '<i class="fas fa-trash"></i> Sí, eliminar',
+        cancelButtonText: '<i class="fas fa-times"></i> Cancelar',
+        focusCancel: true,
+        customClass: {
+            popup: 'swal-custom-popup',
+            confirmButton: 'swal-btn-confirm',
+            cancelButton: 'swal-btn-cancel'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const categories = getCategories();
+            const updatedCategories = categories.filter(c => c.id !== id);
+            saveCategories(updatedCategories);
+            renderCategories();
+            
+            Swal.fire({
+                title: '¡Eliminada!',
+                text: 'La categoría ha sido eliminada correctamente',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'swal-custom-popup'
+                }
+            });
+        }
+    });
 }
 
 // Cerrar modales con ESC o click fuera

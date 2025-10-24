@@ -1,0 +1,185 @@
+/* ========================================
+   SWEETALERT2 CUSTOM STYLES
+   ======================================== */
+
+/* Popup personalizado */
+.swal-custom-popup {
+    border-radius: 16px !important;
+    padding: 2rem !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Título */
+.swal2-title {
+    color: var(--primary-color) !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Contenido HTML */
+.swal2-html-container {
+    color: var(--text-color) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Iconos */
+.swal2-icon {
+    margin: 1.5rem auto !important;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #f39c12 !important;
+    color: #f39c12 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #e74c3c !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #2ecc71 !important;
+}
+
+.swal2-icon.swal2-question {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+/* Botones personalizados */
+.swal-btn-confirm {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.8rem 2rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3) !important;
+}
+
+.swal-btn-confirm:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4) !important;
+}
+
+.swal-btn-confirm:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2) !important;
+}
+
+.swal-btn-cancel {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.8rem 2rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 2px 8px rgba(149, 165, 166, 0.3) !important;
+}
+
+.swal-btn-cancel:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.4) !important;
+}
+
+.swal-btn-cancel:focus {
+    box-shadow: 0 0 0 3px rgba(149, 165, 166, 0.2) !important;
+}
+
+/* Espaciado entre botones */
+.swal2-actions {
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+}
+
+/* Animación de entrada */
+.swal2-show {
+    animation: swal2-show 0.3s !important;
+}
+
+@keyframes swal2-show {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    45% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    80% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Overlay */
+.swal2-container {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.swal2-popup.swal2-backdrop-show {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .swal-custom-popup {
+        padding: 1.5rem !important;
+    }
+    
+    .swal2-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .swal2-html-container {
+        font-size: 0.9rem !important;
+    }
+    
+    .swal-btn-confirm,
+    .swal-btn-cancel {
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Variantes de color para confirm button */
+.swal2-confirm.swal-btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5f7f 100%) !important;
+    box-shadow: 0 2px 8px rgba(26, 58, 82, 0.3) !important;
+}
+
+.swal2-confirm.swal-btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(26, 58, 82, 0.4) !important;
+}
+
+.swal2-confirm.swal-btn-success {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%) !important;
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3) !important;
+}
+
+.swal2-confirm.swal-btn-success:hover {
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4) !important;
+}
+
+/* Timer progress bar */
+.swal2-timer-progress-bar {
+    background: var(--primary-color) !important;
+}
+
+/* Texto de validación */
+.swal2-validation-message {
+    background: #fee !important;
+    color: #c00 !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    margin-top: 0.5rem !important;
+}
