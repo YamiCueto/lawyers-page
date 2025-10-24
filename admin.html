@@ -4,127 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Administrativo | Despacho Jurídico</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Estilos Modulares -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/admin-layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin-tables.css">
+    <link rel="stylesheet" href="css/modals.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="admin-header-left">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h1 class="logo">Panel Administrativo</h1>
-                </div>
-                <nav class="nav">
-                    <span class="admin-user">
-                        <i class="fas fa-user-circle"></i>
-                        <span id="adminUsername">Admin</span>
-                    </span>
-                    <a href="index.html" class="nav-link">
-                        <i class="fas fa-home"></i> Inicio
-                    </a>
-                    <a href="blog.html" class="nav-link">
-                        <i class="fas fa-blog"></i> Ver Blog
-                    </a>
-                    <button id="logoutBtn" class="btn btn-secondary">
-                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                    </button>
-                </nav>
-            </div>
+<body class="admin-body">
+    <!-- Header Superior -->
+    <header class="admin-topbar">
+        <div class="topbar-left">
+            <button title="Toggle Sidebar" class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="topbar-logo">
+                <i class="fas fa-balance-scale"></i>
+                Despacho Jurídico
+            </h1>
+        </div>
+        <div class="topbar-right">
+            <span class="admin-user">
+                <i class="fas fa-user-circle"></i>
+                <span id="adminUsername">Administrador</span>
+            </span>
+            <button id="logoutBtn" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
         </div>
     </header>
 
-    <main class="admin-container">
-        <div class="container">
-            <!-- Header con título y botón de crear -->
-            <div class="admin-page-header">
-                <div>
-                    <h2>
-                        <i class="fas fa-newspaper"></i>
-                        Gestión de Publicaciones
-                    </h2>
-                    <p class="admin-subtitle">Administra las entradas del blog</p>
-                </div>
-                <button class="btn btn-primary" onclick="openPostModal()">
-                    <i class="fas fa-plus"></i> Nueva Publicación
-                </button>
-            </div>
+    <!-- Layout Principal con Sidebar -->
+    <div class="admin-layout">
+        <!-- Sidebar de Navegación -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" onclick="switchSection('dashboard')" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('posts')" data-section="posts">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Publicaciones</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('categories')" data-section="categories">
+                    <i class="fas fa-tags"></i>
+                    <span>Categorías</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('clients')" data-section="clients">
+                    <i class="fas fa-users"></i>
+                    <span>Clientes</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('reviews')" data-section="reviews">
+                    <i class="fas fa-star"></i>
+                    <span>Reseñas</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('contact')" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensajes</span>
+                </a>
+                <a href="#" class="sidebar-link" onclick="switchSection('settings')" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Configuración</span>
+                </a>
+                
+                <div class="sidebar-divider"></div>
+                
+                <a href="index.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Ver Sitio Web</span>
+                </a>
+                <a href="blog.html" class="sidebar-link">
+                    <i class="fas fa-blog"></i>
+                    <span>Ver Blog</span>
+                </a>
+            </nav>
+        </aside>
 
-            <!-- Estadísticas rápidas -->
-            <div class="admin-stats">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="totalPosts">0</h3>
-                        <p>Total Publicaciones</p>
-                    </div>
+        <!-- Contenido Principal -->
+        <main class="admin-main">
+            
+            <!-- ========== SECCIÓN: DASHBOARD ========== -->
+            <section id="dashboardSection" class="admin-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                    <p class="section-subtitle">Resumen general del sistema</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-day"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="todayPosts">0</h3>
-                        <p>Publicadas Hoy</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="totalCategories">5</h3>
-                        <p>Categorías</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Filtros y búsqueda -->
-            <div class="admin-filters">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input 
-                        type="text" 
-                        id="searchPosts" 
-                        placeholder="Buscar publicaciones..."
-                        oninput="filterPosts()"
-                    >
-                </div>
-                <select title="Filtrar por categoría" id="filterCategory" onchange="filterPosts()">
-                    <option value="">Todas las categorías</option>
-                    <option value="laboral">Laboral Administrativo</option>
-                    <option value="contencioso">Contencioso Administrativo</option>
-                    <option value="disciplinario">Derecho Disciplinario</option>
-                    <option value="civil">Derecho Civil</option>
-                    <option value="general">General</option>
-                </select>
-            </div>
+                <!-- Tarjetas de Estadísticas Principales -->
+                <div class="dashboard-stats">
+                    <div class="dashboard-card card-primary">
+                        <div class="card-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="dashTotalPosts">0</h3>
+                            <p>Publicaciones</p>
+                            <span class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +12% este mes
+                            </span>
+                        </div>
+                    </div>
 
-            <!-- Tabla de publicaciones -->
-            <div class="admin-table-container">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Categoría</th>
-                            <th>Fecha</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="postsTableBody">
-                        <!-- Se llenará dinámicamente -->
-                    </tbody>
-                </table>
-                <div id="emptyState" class="empty-state" style="display: none;">
-                    <i class="fas fa-inbox"></i>
-                    <p>No hay publicaciones disponibles</p>
+                    <div class="dashboard-card card-success">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="dashTotalClients">248</h3>
+                            <p>Clientes Activos</p>
+                            <span class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> +8% este mes
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card card-warning">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="dashTotalReviews">156</h3>
+                            <p>Reseñas</p>
+                            <span class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i> 4.8 promedio
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card card-info">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="dashTotalMessages">42</h3>
+                            <p>Mensajes Nuevos</p>
+                            <span class="card-trend negative">
+                                <i class="fas fa-exclamation-circle"></i> 12 sin leer
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </main>
+
+                <!-- Gráficos y Tablas -->
+                <div class="dashboard-grid">
+                    <!-- Publicaciones Recientes -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-newspaper"></i> Publicaciones Recientes</h3>
+                            <a href="#" onclick="switchSection('posts')" class="widget-link">Ver todas</a>
+                        </div>
+                        <div class="widget-body">
+                            <table class="widget-table" id="recentPostsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Categoría</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Se llena dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas por Categoría -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-chart-pie"></i> Publicaciones por Categoría</h3>
+                        </div>
+                        <div class="widget-body">
+                            <div id="categoryStatsChart" class="category-chart">
+                                <!-- Se llena dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actividad Reciente -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-clock"></i> Actividad Reciente</h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="activity-feed">
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Nueva publicación</strong> creada</p>
+                                        <span class="activity-time">Hace 2 horas</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-success">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Nuevo cliente</strong> registrado</p>
+                                        <span class="activity-time">Hace 3 horas</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-warning">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Nueva reseña</strong> recibida (5 estrellas)</p>
+                                        <span class="activity-time">Hace 5 horas</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-info">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Mensaje de contacto</strong> recibido</p>
+                                        <span class="activity-time">Hace 1 día</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reseñas Recientes -->
+                    <div class="dashboard-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-star"></i> Últimas Reseñas</h3>
+                            <a href="#" onclick="switchSection('reviews')" class="widget-link">Ver todas</a>
+                        </div>
+                        <div class="widget-body">
+                            <div class="reviews-list">
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="review-date">Hace 1 día</span>
+                                    </div>
+                                    <p class="review-text">"Excelente servicio legal. Muy profesionales y atentos."</p>
+                                    <p class="review-author"><strong>María González</strong></p>
+                                </div>
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="review-date">Hace 2 días</span>
+                                    </div>
+                                    <p class="review-text">"Muy buena atención, resolvieron mi caso rápidamente."</p>
+                                    <p class="review-author"><strong>Carlos Ramírez</strong></p>
+                                </div>
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="review-date">Hace 3 días</span>
+                                    </div>
+                                    <p class="review-text">"Recomendados 100%. Gran experiencia profesional."</p>
+                                    <p class="review-author"><strong>Ana Martínez</strong></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: PUBLICACIONES ========== -->
+            <section id="postsSection" class="admin-section">
+                <!-- Header con título y botón de crear -->
+                <div class="section-header">
+                    <div>
+                        <h2>
+                            <i class="fas fa-newspaper"></i>
+                            Gestión de Publicaciones
+                        </h2>
+                        <p class="section-subtitle">Administra las entradas del blog</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openPostModal()">
+                        <i class="fas fa-plus"></i> Nueva Publicación
+                    </button>
+                </div>
+
+                <!-- Filtros y búsqueda -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input 
+                            type="text" 
+                            id="searchPosts" 
+                            placeholder="Buscar publicaciones..."
+                            oninput="filterPosts()"
+                        >
+                    </div>
+                    <select title="Filtrar por categoría" id="filterCategory" onchange="filterPosts()">
+                        <option value="">Todas las categorías</option>
+                        <option value="laboral">Laboral Administrativo</option>
+                        <option value="contencioso">Contencioso Administrativo</option>
+                        <option value="disciplinario">Derecho Disciplinario</option>
+                        <option value="civil">Derecho Civil</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+
+                <!-- Tabla de publicaciones -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postsTableBody">
+                            <!-- Se llenará dinámicamente -->
+                        </tbody>
+                    </table>
+                    <div id="emptyState" class="empty-state hidden">
+                        <i class="fas fa-inbox"></i>
+                        <p>No hay publicaciones disponibles</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: CATEGORÍAS ========== -->
+            <section id="categoriesSection" class="admin-section">
+                <!-- Header con título y botón de crear -->
+                <div class="section-header">
+                    <div>
+                        <h2>
+                            <i class="fas fa-tags"></i>
+                            Gestión de Categorías
+                        </h2>
+                        <p class="section-subtitle">Administra las categorías del blog</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openCategoryModal()">
+                        <i class="fas fa-plus"></i> Nueva Categoría
+                    </button>
+                </div>
+
+                <!-- Tabla de categorías -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Slug</th>
+                                <th>Color</th>
+                                <th>Publicaciones</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTableBody">
+                            <!-- Se llenará dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: CLIENTES (Placeholder) ========== -->
+            <section id="clientsSection" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Gestión de Clientes</h2>
+                    <p class="section-subtitle">Administra la información de clientes</p>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-users fa-3x"></i>
+                    <h3>Sección en desarrollo</h3>
+                    <p>La gestión de clientes estará disponible próximamente</p>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: RESEÑAS (Placeholder) ========== -->
+            <section id="reviewsSection" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Gestión de Reseñas</h2>
+                    <p class="section-subtitle">Administra las reseñas y testimonios</p>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-star fa-3x"></i>
+                    <h3>Sección en desarrollo</h3>
+                    <p>La gestión de reseñas estará disponible próximamente</p>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: MENSAJES (Placeholder) ========== -->
+            <section id="contactSection" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-envelope"></i> Mensajes de Contacto</h2>
+                    <p class="section-subtitle">Revisa y gestiona los mensajes recibidos</p>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-envelope fa-3x"></i>
+                    <h3>Sección en desarrollo</h3>
+                    <p>La gestión de mensajes estará disponible próximamente</p>
+                </div>
+            </section>
+
+            <!-- ========== SECCIÓN: CONFIGURACIÓN (Placeholder) ========== -->
+            <section id="settingsSection" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Configuración</h2>
+                    <p class="section-subtitle">Ajustes generales del sistema</p>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-cog fa-3x"></i>
+                    <h3>Sección en desarrollo</h3>
+                    <p>Las opciones de configuración estarán disponibles próximamente</p>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <!-- Modal para crear/editar publicación -->
     <div id="postModal" class="modal">
@@ -194,6 +505,109 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i> 
                             <span id="submitBtnText">Publicar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear/editar categoría -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-tag"></i>
+                    <span id="categoryModalTitle">Nueva Categoría</span>
+                </h3>
+                <button title="Cerrar" class="modal-close" onclick="closeCategoryModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" class="admin-form">
+                    <input type="hidden" id="categoryId">
+                    
+                    <div class="form-group">
+                        <label for="categoryName">
+                            <i class="fas fa-heading"></i>
+                            Nombre de la categoría
+                        </label>
+                        <input 
+                            type="text" 
+                            id="categoryName" 
+                            placeholder="Ej: Derecho Penal"
+                            required
+                        >
+                        <small class="form-help">
+                            <i class="fas fa-info-circle"></i>
+                            El nombre que se mostrará en el sitio web
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categorySlug">
+                            <i class="fas fa-link"></i>
+                            Slug (URL amigable)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="categorySlug" 
+                            placeholder="derecho-penal"
+                            required
+                            pattern="[a-z0-9-]+"
+                        >
+                        <small class="form-help">
+                            <i class="fas fa-info-circle"></i>
+                            Solo letras minúsculas, números y guiones. Se genera automáticamente.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoryColor">
+                            <i class="fas fa-palette"></i>
+                            Color
+                        </label>
+                        <div class="color-picker-group">
+                            <input 
+                                type="color" 
+                                id="categoryColor" 
+                                value="#1a3a52"
+                                required
+                            >
+                            <input 
+                                type="text" 
+                                id="categoryColorText" 
+                                value="#1a3a52"
+                                pattern="^#[0-9A-Fa-f]{6}$"
+                                placeholder="#1a3a52"
+                            >
+                        </div>
+                        <small class="form-help">
+                            <i class="fas fa-info-circle"></i>
+                            Color del badge de la categoría
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoryDescription">
+                            <i class="fas fa-align-left"></i>
+                            Descripción (opcional)
+                        </label>
+                        <textarea 
+                            id="categoryDescription" 
+                            rows="3" 
+                            placeholder="Breve descripción de la categoría..."
+                        ></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closeCategoryModal()">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> 
+                            <span id="categorySubmitBtnText">Guardar</span>
                         </button>
                     </div>
                 </form>

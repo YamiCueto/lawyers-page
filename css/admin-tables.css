@@ -1,0 +1,182 @@
+/* ========================================
+   TABLAS Y FILTROS DE ADMINISTRACIÓN
+   ======================================== */
+
+/* Filtros */
+.admin-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.admin-filters select {
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.admin-filters select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 58, 82, 0.1);
+}
+
+/* Tabla de Administración */
+.admin-table-container {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table thead {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5f7f 100%);
+    color: var(--white);
+}
+
+.admin-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.3s;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.post-title-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.post-title-cell strong {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.post-title-cell small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.category-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.category-name-cell strong {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.category-name-cell small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.color-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-preview span:last-child {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-count {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2c5f7f 100%);
+    color: var(--white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+code {
+    background-color: var(--light-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #e74c3c;
+    border: 1px solid var(--border-color);
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+}
+
+/* Responsive Tables */
+@media (max-width: 968px) {
+    .admin-filters {
+        flex-direction: column;
+    }
+    
+    .admin-filters select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-table th,
+    .admin-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .post-title-cell small {
+        display: none;
+    }
+}
