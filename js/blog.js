@@ -7,6 +7,7 @@ function getCategoryName(category) {
     const categories = {
         'laboral': 'Laboral Administrativo',
         'contencioso': 'Contencioso Administrativo',
+        'disciplinario': 'Derecho Disciplinario',
         'civil': 'Derecho Civil',
         'general': 'General'
     };
