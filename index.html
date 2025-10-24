@@ -42,22 +42,37 @@
             <h2 class="section-title">Nuestros Servicios</h2>
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
                     <h3>Laboral Administrativo</h3>
                     <p>Defensa en despidos injustificados, liquidaciones, prestaciones sociales y conflictos laborales.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
                     <h3>Contencioso Administrativo</h3>
                     <p>Procesos contra entidades públicas, nulidades, acciones de grupo y reparación directa.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
                     <h3>Derecho Disciplinario</h3>
                     <p>Defensa en procesos disciplinarios, investigaciones y sanciones administrativas para servidores públicos.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
                     <h3>Derecho Civil</h3>
                     <p>Contratos, obligaciones, responsabilidad civil, arrendamientos y procesos ejecutivos.</p>
                 </div>
                 <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
                     <h3>Asesoría Integral</h3>
                     <p>Consultoría jurídica permanente para empresas y particulares en todas las áreas del derecho.</p>
                 </div>
@@ -459,6 +474,24 @@
                 }
                 
                 modalStars.innerHTML = starsHTML;
+            });
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
             });
         });
     </script>
