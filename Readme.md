@@ -15,32 +15,42 @@ Página web diseñada para captar clientes potenciales mediante una presentació
 - ✅ Sistema de autenticación para panel administrativo
 - ✅ Gestión de publicaciones del blog (crear, listar, eliminar)
 - ✅ Filtrado de artículos por categoría jurídica
+- ✅ Visualización completa de artículos individuales
 - ✅ Formulario de contacto con validación
+- ✅ Sección de reseñas con carousel interactivo (Bootstrap)
+- ✅ Modal para ver reseñas en detalle
+- ✅ Avatares dinámicos de clientes (Random User API)
+- ✅ Sistema de calificación con estrellas (5 y 4.8)
 - ✅ Paleta de colores corporativa (azul oscuro + beige)
 - ✅ Optimizado para SEO básico
 
 ## 🛠️ Tecnologías
 
 - **HTML5** - Estructura semántica
-- **CSS3** - Diseño responsive sin frameworks
+- **CSS3** - Diseño responsive sin frameworks adicionales
 - **JavaScript Vanilla** - Funcionalidad sin dependencias
+- **Bootstrap 5.3.2** - Sistema de carousel y modales
+- **Font Awesome 6.4.0** - Iconos y sistema de estrellas
 - **LocalStorage** - Persistencia de datos en navegador
+- **Random User API** - Generación de avatares realistas
 
 ## 📁 Estructura del Proyecto
 
 ```
 lawyers-page/
-├── index.html          # Página principal
-├── blog.html           # Blog jurídico
-├── contact.html        # Contacto
+├── index.html          # Página principal con reseñas
+├── blog.html           # Blog jurídico con filtros
+├── contact.html        # Contacto con formulario
 ├── login.html          # Login administrativo
 ├── admin.html          # Panel de gestión
+├── post.html           # Vista de artículo individual
 ├── css/
 │   └── styles.css      # Estilos globales
 ├── js/
 │   ├── auth.js         # Autenticación
 │   ├── admin.js        # CRUD de publicaciones
-│   └── blog.js         # Visualización del blog
+│   ├── blog.js         # Visualización del blog
+│   └── post.js         # Vista individual de posts
 └── assets/
     └── images/         # Recursos gráficos
 ```
@@ -91,6 +101,14 @@ Desde el panel puedes crear, visualizar y eliminar publicaciones del blog.
 - **Móvil**: < 768px
 - **Tablet**: 768px - 1024px
 - **Desktop**: > 1024px
+
+## ⭐ Sección de Reseñas
+
+- **10 reseñas de clientes** organizadas en carousel
+- **Sistema de calificación**: 5 estrellas (50%) y 4.8 estrellas (50%)
+- **Modal interactivo**: Click en cualquier reseña para ver detalle completo
+- **Avatares dinámicos**: Generados con Random User API
+- **Navegación**: Controles de flecha e indicadores de página
 
 ## 🔄 Próximas Mejoras
 

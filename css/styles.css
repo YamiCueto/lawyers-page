@@ -183,11 +183,13 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
     height: 100%;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .testimonial-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
 }
 
 .testimonial-header {
@@ -249,6 +251,40 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+}
+
+.modal-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid var(--secondary-color);
+}
+
+.modal-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-body p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    font-style: italic;
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--light-bg);
 }
 
 .footer {
