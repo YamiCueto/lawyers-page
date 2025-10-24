@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog jurídico con artículos sobre derecho laboral, familiar y civil.">
+    <title>Blog Jurídico | Despacho Jurídico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Despacho Jurídico</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="blog.html" class="nav-link active">Blog</a>
+                    <a href="contact.html" class="nav-link">Contacto</a>
+                    <a href="login.html" class="nav-link nav-admin">Admin</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="blog-hero">
+        <div class="container">
+            <h2>Blog Jurídico</h2>
+            <p>Artículos, noticias y análisis sobre temas legales de interés</p>
+        </div>
+    </section>
+
+    <main class="blog-container">
+        <div class="container">
+            <div class="blog-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="laboral">Laboral Administrativo</button>
+                <button class="filter-btn" data-filter="contencioso">Contencioso Administrativo</button>
+                <button class="filter-btn" data-filter="civil">Civil</button>
+                <button class="filter-btn" data-filter="general">General</button>
+            </div>
+            <div id="blogPosts" class="blog-grid"></div>
+            <div id="emptyState" class="empty-state">
+                <p>No hay publicaciones disponibles en este momento.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Despacho Jurídico</h4>
+                    <p>Asesoría legal profesional</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Barranquilla, Colombia</p>
+                    <p>contacto@despachojuridico.com</p>
+                    <p>+57 300 123 4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horario</h4>
+                    <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p>Sábados: 9:00 AM - 1:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Despacho Jurídico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/blog.js"></script>
+</body>
+</html>

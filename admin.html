@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo | Despacho Jurídico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Panel Administrativo</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="blog.html" class="nav-link">Ver Blog</a>
+                    <button id="logoutBtn" class="btn btn-secondary">Cerrar Sesión</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <div class="container">
+            <h2>Crear Nueva Publicación</h2>
+            <form id="postForm" class="admin-form">
+                <div class="form-group">
+                    <label for="postTitle">Título</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="postCategory">Categoría</label>
+                    <select id="postCategory" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="laboral">Laboral Administrativo</option>
+                        <option value="contencioso">Contencioso Administrativo</option>
+                        <option value="civil">Derecho Civil</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Contenido</label>
+                    <textarea id="postContent" rows="10" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar</button>
+            </form>
+
+            <h2 class="posts-list-title">Publicaciones Existentes</h2>
+            <div id="postsList" class="posts-admin-list"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Despacho Jurídico. Panel Administrativo.</p>
+        </div>
+    </footer>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

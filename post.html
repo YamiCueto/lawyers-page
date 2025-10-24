@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo | Despacho Jurídico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Despacho Jurídico</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="blog.html" class="nav-link active">Blog</a>
+                    <a href="contact.html" class="nav-link">Contacto</a>
+                    <a href="login.html" class="nav-link nav-admin">Admin</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="post-detail-container">
+        <div class="container">
+            <a href="blog.html" class="back-to-blog">&larr; Volver al blog</a>
+            
+            <article id="postContent" class="post-detail">
+                <div class="post-detail-header">
+                    <span id="postCategory" class="post-detail-category"></span>
+                    <h1 id="postTitle" class="post-detail-title"></h1>
+                    <div class="post-detail-meta">
+                        <span id="postDate" class="post-detail-date"></span>
+                    </div>
+                </div>
+                
+                <div id="postBody" class="post-detail-body"></div>
+            </article>
+
+            <div id="notFound" class="post-not-found">
+                <h2>Artículo no encontrado</h2>
+                <p>El artículo que buscas no existe o ha sido eliminado.</p>
+                <a href="blog.html" class="btn btn-primary">Ver todos los artículos</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Despacho Jurídico</h4>
+                    <p>Asesoría legal profesional</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Barranquilla, Colombia</p>
+                    <p>contacto@despachojuridico.com</p>
+                    <p>+57 300 123 4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horario</h4>
+                    <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p>Sábados: 9:00 AM - 1:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Despacho Jurídico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/post.js"></script>
+</body>
+</html>
